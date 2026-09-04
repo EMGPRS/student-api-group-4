@@ -1,0 +1,51 @@
+﻿using Microsoft.EntityFrameworkCore;
+using StudentRegistration.Api.Data;
+using StudentRegistration.Api.Models;
+using StudentRegistration.Api.Services;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+builder.Services.AddDbContext<StudentDbContext>(options =>
+    options.UseSqlite("Data Source=students.db"));
+
+builder.Services.AddScoped<IStudentService, StudentService>();
+
+var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<StudentDbContext>();
+    dbContext.Database.EnsureCreated();
+
+    if (!dbContext.Students.Any())
+    {
+        dbContext.Students.AddRange(
+            new Student { FirstName = "John", LastName = "Doe", StudentNumber = "ST01", Gender = "Male" },
+            new Student { FirstName = "Thabo", LastName = "Mokoena", StudentNumber = "ST02", Gender = "Male" },
+            new Student { FirstName = "Naledi", LastName = "Dhlamini", StudentNumber = "ST03", Gender = "Female" },
+            new Student { FirstName = "Tracy", LastName = "Ndlovu", StudentNumber = "ST04", Gender = "Female" },
+            new Student { FirstName = "Thato", LastName = "Moyo", StudentNumber = "ST05", Gender = "Male" }
+        );
+
+        dbContext.SaveChanges();
+    }
+}
+
+// Configure the HTTP request pipeline.
+
+app.UseSwagger();
+app.UseSwaggerUI();
+
+app.UseHttpsRedirection();
+
+app.UseAuthorization();
+
+app.MapControllers();
+
+app.Run();

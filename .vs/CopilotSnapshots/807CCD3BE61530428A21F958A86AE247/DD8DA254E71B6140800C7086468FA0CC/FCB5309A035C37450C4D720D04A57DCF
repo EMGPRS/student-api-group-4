@@ -1,0 +1,70 @@
+﻿using Microsoft.EntityFrameworkCore;
+using StudentRegistration.Api.Data;
+using StudentRegistration.Api.Models;
+
+namespace StudentRegistration.Api.Services
+{
+    public class StudentService : IStudentService
+    {
+        private readonly StudentDbContext _dbContext;
+
+        public StudentService(StudentDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
+        public List<Student> GetStudents()
+        {
+            return _dbContext.Students.AsNoTracking().ToList();
+        }
+
+        public Student? GetStudentById(int id)
+        {
+            return _dbContext.Students.AsNoTracking().FirstOrDefault(x => x.Id == id);
+        }
+
+        public List<Student> Find(string search)
+        {
+            return _dbContext.Students
+                .AsNoTracking()
+                .Where(x => x.StudentNumber.Contains(search) ||
+                            x.FirstName.Contains(search) ||
+                            x.LastName.Contains(search) ||
+                            x.Gender.Contains(search))
+                .ToList();
+        }
+
+        public Student AddStudent(Student student)
+        {
+            _dbContext.Students.Add(student);
+            _dbContext.SaveChanges();
+            return student;
+        }
+
+        public Student? UpdateStudent(int id, Student updatedStudent)
+        {
+            var existingStudent = _dbContext.Students.FirstOrDefault(x => x.Id == id);
+            if (existingStudent is null)
+                return null;
+
+            existingStudent.StudentNumber = updatedStudent.StudentNumber;
+            existingStudent.FirstName = updatedStudent.FirstName;
+            existingStudent.LastName = updatedStudent.LastName;
+            existingStudent.Gender = updatedStudent.Gender;
+
+            _dbContext.SaveChanges();
+            return existingStudent;
+        }
+
+        public Student? DeleteStudent(int id)
+        {
+            var existingStudent = _dbContext.Students.FirstOrDefault(x => x.Id == id);
+            if (existingStudent is null)
+                return null;
+
+            _dbContext.Students.Remove(existingStudent);
+            _dbContext.SaveChanges();
+            return existingStudent;
+        }
+    }
+}

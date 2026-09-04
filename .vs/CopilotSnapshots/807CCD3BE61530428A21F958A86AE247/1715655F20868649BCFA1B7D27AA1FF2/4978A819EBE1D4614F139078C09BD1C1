@@ -1,0 +1,76 @@
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using StudentRegistration.Api.Models;
+using StudentRegistration.Api.Services;
+
+namespace StudentRegistration.Api.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class StudentController : ControllerBase
+    {
+        private readonly StudentService _studentService;
+        List<Student> students = new List<Student>();
+        public StudentController(StudentService studentService)
+        {
+            _studentService = studentService;
+            students = _studentService.GetStudents();
+        }
+
+        [HttpGet]
+        public ActionResult<List<Student>> GetStudents()
+        {
+            // var students = _studentService.GetStudents();
+            //send the list of students to the client
+            return Ok(students);
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult<Student> GetStudentById(int id)
+        {
+            var student = students.FirstOrDefault(x => x.Id == id);
+            if (student is null)
+                return NotFound($"Student with id {id} was not found");
+
+            return Ok(student);
+        }
+
+        [HttpGet("search")]
+        public ActionResult<List<Student>> Find(string search)
+        {
+            //var students = _studentService.GetStudents();
+            var results = students.Where(x => x.StudentNumber.Contains(search) ||
+                                       x.FirstName.Contains(search) ||
+                                       x.LastName.Contains(search) ||
+                                       x.Gender.Contains(search)).ToList();
+            if (results.Any())
+                return Ok(results);
+            return NotFound($"No records matching {search}");
+        }
+
+        [HttpPost]
+        public ActionResult<Student> AddStudent(Student student)
+        {
+            var studentId = students.Max(x => x.Id) + 1;
+            student.Id = studentId;
+            students.Add(student);
+            return Ok(student);
+        }
+
+        [HttpPut("{id}")]
+        public ActionResult<Student> UpdateStudent(int id, Student updatedStudent)
+        {
+            var existingStudent = students.FirstOrDefault(x => x.Id == id);
+            if (existingStudent is null)
+                return NotFound($"Student with id {id} was not found");
+
+            existingStudent.StudentNumber = updatedStudent.StudentNumber;
+            existingStudent.FirstName = updatedStudent.FirstName;
+            existingStudent.LastName = updatedStudent.LastName;
+            existingStudent.Gender = updatedStudent.Gender;
+
+            return Ok(existingStudent);
+        }
+
+    }
+}

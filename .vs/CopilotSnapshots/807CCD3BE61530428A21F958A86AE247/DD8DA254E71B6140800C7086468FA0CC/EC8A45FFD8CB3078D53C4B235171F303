@@ -1,0 +1,14 @@
+﻿using StudentRegistration.Api.Models;
+
+namespace StudentRegistration.Api.Services
+{
+    public interface IStudentService
+    {
+        List<Student> GetStudents();
+        Student? GetStudentById(int id);
+        List<Student> Find(string search);
+        Student AddStudent(Student student);
+        Student? UpdateStudent(int id, Student updatedStudent);
+        Student? DeleteStudent(int id);
+    }
+}

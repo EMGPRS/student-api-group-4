@@ -1,0 +1,72 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using StudentRegistration.Api.Models;
+using StudentRegistration.Api.Services;
+
+namespace StudentRegistration.Api.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class StudentController : ControllerBase
+    {
+        private readonly IStudentService _studentService;
+
+        public StudentController(IStudentService studentService)
+        {
+            _studentService = studentService;
+        }
+
+        [HttpGet]
+        public ActionResult<List<Student>> GetStudents()
+        {
+            var students = _studentService.GetStudents();
+            return Ok(students);
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult<Student> GetStudentById(int id)
+        {
+            var student = _studentService.GetStudentById(id);
+            if (student is null)
+                return NotFound($"Student with id {id} was not found");
+
+            return Ok(student);
+        }
+
+        [HttpGet("search")]
+        public ActionResult<List<Student>> Find(string search)
+        {
+            var results = _studentService.Find(search);
+            if (results.Any())
+                return Ok(results);
+            return NotFound($"No records matching {search}");
+        }
+
+        [HttpPost]
+        public ActionResult<Student> AddStudent(Student student)
+        {
+            var createdStudent = _studentService.AddStudent(student);
+            return Ok(createdStudent);
+        }
+
+        [HttpPut("{id}")]
+        public ActionResult<Student> UpdateStudent(int id, Student updatedStudent)
+        {
+            var student = _studentService.UpdateStudent(id, updatedStudent);
+            if (student is null)
+                return NotFound($"Student with id {id} was not found");
+
+            return Ok(student);
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult<Student> DeleteStudent(int id)
+        {
+            var student = _studentService.DeleteStudent(id);
+            if (student is null)
+                return NotFound($"Student with id {id} was not found");
+
+            return Ok(student);
+        }
+
+    }
+}

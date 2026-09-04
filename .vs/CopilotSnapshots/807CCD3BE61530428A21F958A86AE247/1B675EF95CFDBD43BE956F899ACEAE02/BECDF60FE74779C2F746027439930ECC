@@ -1,0 +1,20 @@
+﻿using StudentRegistration.Api.Models;
+
+namespace StudentRegistration.Api.Services
+{
+    public class StudentService
+    {
+        public List<Student> GetStudents()
+        {
+            return new List<Student>
+            {
+                new Student { Id = 1, FirstName = "John", LastName = "Doe", StudentNumber = "ST01", Gender = "Male" },
+                new Student { Id = 2, FirstName = "Thabo", LastName = "Mokoena", StudentNumber = "ST02", Gender = "Male" },
+                new Student { Id = 3, FirstName = "Naledi", LastName = "Dhlamini", StudentNumber = "ST03", Gender = "Female" },
+                new Student { Id = 4, FirstName = "Tracy", LastName = "Ndlovu", StudentNumber = "ST04", Gender = "Female" },
+                new Student { Id = 5, FirstName = "Thato", LastName = "Moyo", StudentNumber = "ST05", Gender = "Male" },
+
+            };
+        }
+    }
+}
