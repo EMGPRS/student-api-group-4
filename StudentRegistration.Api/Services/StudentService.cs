@@ -1,78 +1,73 @@
-﻿using StudentRegistration.Api.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using StudentRegistration.Api.Data;
+using StudentRegistration.Api.Models;
 
 namespace StudentRegistration.Api.Services
 {
     public class StudentService : IStudentService
     {
-        private readonly List<Student> _students =
-        [
-            new Student { Id = 1, FirstName = "John", LastName = "Doe", StudentNumber = "ST01", Gender = "Male" },
-            new Student { Id = 2, FirstName = "Thabo", LastName = "Mokoena", StudentNumber = "ST02", Gender = "Male" },
-            new Student { Id = 3, FirstName = "Naledi", LastName = "Dhlamini", StudentNumber = "ST03", Gender = "Female" },
-            new Student { Id = 4, FirstName = "Tracy", LastName = "Ndlovu", StudentNumber = "ST04", Gender = "Female" },
-            new Student { Id = 5, FirstName = "Thato", LastName = "Moyo", StudentNumber = "ST05", Gender = "Male" }
-        ];
-        private readonly object _lock = new();
+        private readonly StudentDBContext _context;
+
+        public StudentService(StudentDBContext context)
+        {
+            _context = context;
+        }
 
         public Task<List<Student>> GetStudentsAsync()
         {
-            lock (_lock)
-            return Task.FromResult(_students.ToList());
+            return _context.Students.OrderBy(x => x.Id).ToListAsync();
         }
 
         public Task<Student?> GetStudentByIdAsync(int id)
         {
-            lock (_lock)
-            return Task.FromResult(_students.FirstOrDefault(x => x.Id == id));
+            return _context.Students
+                 .FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public Task<List<Student>> FindAsync(string search)
         {
-            lock (_lock)
-            return Task.FromResult(_students.Where(x => x.StudentNumber.Contains(search) ||
+
+            return _context.Students.Where(x => x.StudentNumber.Contains(search) ||
                     x.FirstName.Contains(search) ||
                     x.LastName.Contains(search) ||
-                    x.Gender.Contains(search)).ToList());
+                    x.Gender.Contains(search)).ToListAsync();
         }
 
-        public Task<Student> AddStudentAsync(Student student)
+        public async Task<Student> AddStudentAsync(Student student)
         {
-            lock (_lock)
-            {
-                student.Id = _students.Count == 0 ? 1 : _students.Max(x => x.Id) + 1;
-                _students.Add(student);
-                return Task.FromResult(student);
-            }
+            student.Id = 0;
+            _context.Students.Add(student);
+            await _context.SaveChangesAsync();
+            return student;
         }
 
-        public Task<Student?> UpdateStudentAsync(int id, Student updatedStudent)
+        public async Task<Student?> UpdateStudentAsync(int id, Student updatedStudent)
         {
-            lock (_lock)
-            {
-                var existingStudent = _students.FirstOrDefault(x => x.Id == id);
-                if (existingStudent is null)
-                    return Task.FromResult<Student?>(null);
 
-                existingStudent.StudentNumber = updatedStudent.StudentNumber;
-                existingStudent.FirstName = updatedStudent.FirstName;
-                existingStudent.LastName = updatedStudent.LastName;
-                existingStudent.Gender = updatedStudent.Gender;
+            var existingStudent = _context.Students.FirstOrDefault(x => x.Id == id);
+            if (existingStudent is null)
+                return null;
 
-                return Task.FromResult<Student?>(existingStudent);
-            }
+            existingStudent.StudentNumber = updatedStudent.StudentNumber;
+            existingStudent.FirstName = updatedStudent.FirstName;
+            existingStudent.LastName = updatedStudent.LastName;
+            existingStudent.Gender = updatedStudent.Gender;
+
+            await _context.SaveChangesAsync();
+            return existingStudent;
+
         }
 
-        public Task<Student?> DeleteStudentAsync(int id)
+        public async Task<bool> DeleteStudentAsync(int id)
         {
-            lock (_lock)
-            {
-                var existingStudent = _students.FirstOrDefault(x => x.Id == id);
-                if (existingStudent is null)
-                    return Task.FromResult<Student?>(null);
 
-                _students.Remove(existingStudent);
-                return Task.FromResult<Student?>(existingStudent);
-            }
+            var existingStudent = _context.Students.FirstOrDefault(x => x.Id == id);
+            if (existingStudent is null)
+                return false;
+
+            _context.Students.Remove(existingStudent);
+            await _context.SaveChangesAsync();
+            return true;
         }
     }
 }

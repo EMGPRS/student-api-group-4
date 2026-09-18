@@ -9,6 +9,6 @@ namespace StudentRegistration.Api.Services
         Task<List<Student>> FindAsync(string search);
         Task<Student> AddStudentAsync(Student student);
         Task<Student?> UpdateStudentAsync(int id, Student updatedStudent);
-        Task<Student?> DeleteStudentAsync(int id);
+        Task<bool> DeleteStudentAsync(int id);
     }
 }
