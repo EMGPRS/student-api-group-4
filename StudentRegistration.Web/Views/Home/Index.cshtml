@@ -1,0 +1,77 @@
+﻿@model StudentViewModel
+@{
+    ViewData["Title"] = "Student List";
+    var isEditing = Model.Student.Id > 0;
+}
+
+<div class="row g-4">
+    <div class="col-lg-8">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead>
+                    <tr>
+                        <th class="ps-4">Student #</th>
+                        <th>Name</th>
+                        <th>Gender</th>
+                        <th class="text-end pe-4">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var student in Model.Students)
+                    {
+                        <tr>
+                            <td class="ps-4">@student.StudentNumber</td>
+                            <td>@student.FirstName @student.LastName</td>
+                            <td><span class="badge text-bg-light text-secondary border">@student.Gender</span></td>
+                            <td>
+                                <a class="btn btn-sm btn-outline-primary" asp-route-Id="@student.Id">Edit</a>
+                                <form class="d-inline" asp-action="Delete" method="post">
+                                    <input type="hidden" name="id" value="@student.Id" />
+                                    <button class="btn btn-sm btn-outline-danger" type="submit">Delete</button>
+                                </form>
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <form asp-action="Save" method="post" class="card shadow-sm p-4">
+            <div class="mb-4">
+                <p class="text-uppercase small text-primary fw-semibold mb-1">Student details</p>
+                <h2 class="h4 mb-0">@(isEditing ? "Edit student" : "Add student")</h2>
+            </div>
+            <input asp-for="Student.Id" type="hidden" />
+            <div class="mb-3">
+                <label asp-for="Student.StudentNumber" class="form-label">Student number</label>
+                <input asp-for="Student.StudentNumber" class="form-control" required />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Student.FirstName" class="form-label">First name</label>
+                <input asp-for="Student.FirstName" class="form-control" required />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Student.LastName" class="form-label">Last name</label>
+                <input asp-for="Student.LastName" class="form-control" required />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Student.Gender" class="form-label">Gender</label>
+                <select asp-for="Student.Gender" class="form-select" required>
+                    <option value="">Choose...</option>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                </select>
+            </div>
+            <button class="btn btn-primary" type="submit">@(isEditing ? "Update" : "Add student")</button>
+            @if (isEditing)
+            {
+                <a class="btn btn-link" asp-action="Index">Cancel</a>
+            }
+        </form>
+    </div>
+</div>

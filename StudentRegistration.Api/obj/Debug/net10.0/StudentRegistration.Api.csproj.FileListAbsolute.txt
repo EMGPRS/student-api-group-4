@@ -33,3 +33,5 @@ C:\Projects\Programming2bGroup4\StudentRegistration.Api\StudentRegistration.Api\
 C:\Projects\Programming2bGroup4\StudentRegistration.Api\StudentRegistration.Api\obj\Debug\net10.0\StudentRegistration.Api.csproj.AssemblyReference.cache
 C:\Projects\Programming2bGroup4\StudentRegistration.Api\StudentRegistration.Api\obj\Debug\net10.0\StudentRegistration.Api.MvcApplicationPartsAssemblyInfo.cs
 C:\Projects\Programming2bGroup4\StudentRegistration.Api\StudentRegistration.Api\obj\Debug\net10.0\StudentR.5D9EC186.Up2Date
+C:\Projects\Programming2bGroup4\StudentRegistration.Api\StudentRegistration.Api\obj\Debug\net10.0\StudentRegistration.Api.sourcelink.json
+C:\Projects\Programming2bGroup4\StudentRegistration.Api\StudentRegistration.Api\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt

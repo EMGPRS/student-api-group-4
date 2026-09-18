@@ -1,1 +1,4 @@
-<Solution />
+<Solution>
+  <Project Path="StudentRegistration.Api/StudentRegistration.Api.csproj" />
+  <Project Path="StudentRegistration.Web/StudentRegistration.Web.csproj" />
+</Solution>
