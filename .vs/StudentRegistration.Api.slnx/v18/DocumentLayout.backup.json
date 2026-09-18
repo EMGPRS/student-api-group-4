@@ -1,7 +1,28 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Projects\\Programming2bGroup4\\StudentRegistration.Api\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D52BC76B-7A4D-D2E7-1E63-9F1CF71158DD}|StudentRegistration.Api\\StudentRegistration.Api.csproj|c:\\projects\\programming2bgroup4\\studentregistration.api\\studentregistration.api\\services\\studentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D52BC76B-7A4D-D2E7-1E63-9F1CF71158DD}|StudentRegistration.Api\\StudentRegistration.Api.csproj|solutionrelative:studentregistration.api\\services\\studentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D52BC76B-7A4D-D2E7-1E63-9F1CF71158DD}|StudentRegistration.Api\\StudentRegistration.Api.csproj|c:\\projects\\programming2bgroup4\\studentregistration.api\\studentregistration.api\\services\\istudentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D52BC76B-7A4D-D2E7-1E63-9F1CF71158DD}|StudentRegistration.Api\\StudentRegistration.Api.csproj|solutionrelative:studentregistration.api\\services\\istudentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D52BC76B-7A4D-D2E7-1E63-9F1CF71158DD}|StudentRegistration.Api\\StudentRegistration.Api.csproj|c:\\projects\\programming2bgroup4\\studentregistration.api\\studentregistration.api\\data\\studentdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D52BC76B-7A4D-D2E7-1E63-9F1CF71158DD}|StudentRegistration.Api\\StudentRegistration.Api.csproj|solutionrelative:studentregistration.api\\data\\studentdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D52BC76B-7A4D-D2E7-1E63-9F1CF71158DD}|StudentRegistration.Api\\StudentRegistration.Api.csproj|c:\\projects\\programming2bgroup4\\studentregistration.api\\studentregistration.api\\studentregistration.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{D52BC76B-7A4D-D2E7-1E63-9F1CF71158DD}|StudentRegistration.Api\\StudentRegistration.Api.csproj|solutionrelative:studentregistration.api\\studentregistration.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D52BC76B-7A4D-D2E7-1E63-9F1CF71158DD}|StudentRegistration.Api\\StudentRegistration.Api.csproj|c:\\projects\\programming2bgroup4\\studentregistration.api\\studentregistration.api\\controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D52BC76B-7A4D-D2E7-1E63-9F1CF71158DD}|StudentRegistration.Api\\StudentRegistration.Api.csproj|solutionrelative:studentregistration.api\\controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,8 +30,47 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 8,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IStudentService.cs",
+              "DocumentMoniker": "C:\\Projects\\Programming2bGroup4\\StudentRegistration.Api\\StudentRegistration.Api\\Services\\IStudentService.cs",
+              "RelativeDocumentMoniker": "StudentRegistration.Api\\Services\\IStudentService.cs",
+              "ToolTip": "C:\\Projects\\Programming2bGroup4\\StudentRegistration.Api\\StudentRegistration.Api\\Services\\IStudentService.cs",
+              "RelativeToolTip": "StudentRegistration.Api\\Services\\IStudentService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-18T08:00:02.843Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "StudentDBContext.cs",
+              "DocumentMoniker": "C:\\Projects\\Programming2bGroup4\\StudentRegistration.Api\\StudentRegistration.Api\\Data\\StudentDBContext.cs",
+              "RelativeDocumentMoniker": "StudentRegistration.Api\\Data\\StudentDBContext.cs",
+              "ToolTip": "C:\\Projects\\Programming2bGroup4\\StudentRegistration.Api\\StudentRegistration.Api\\Data\\StudentDBContext.cs",
+              "RelativeToolTip": "StudentRegistration.Api\\Data\\StudentDBContext.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAxwB4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-18T07:37:17.254Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "StudentRegistration.Api",
+              "DocumentMoniker": "C:\\Projects\\Programming2bGroup4\\StudentRegistration.Api\\StudentRegistration.Api\\StudentRegistration.Api.csproj",
+              "RelativeDocumentMoniker": "StudentRegistration.Api\\StudentRegistration.Api.csproj",
+              "ToolTip": "C:\\Projects\\Programming2bGroup4\\StudentRegistration.Api\\StudentRegistration.Api\\StudentRegistration.Api.csproj*",
+              "RelativeToolTip": "StudentRegistration.Api\\StudentRegistration.Api.csproj*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-09-18T07:30:12.376Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:133:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
@@ -30,6 +90,32 @@
             {
               "$type": "Bookmark",
               "Name": "ST:134:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "StudentService.cs",
+              "DocumentMoniker": "C:\\Projects\\Programming2bGroup4\\StudentRegistration.Api\\StudentRegistration.Api\\Services\\StudentService.cs",
+              "RelativeDocumentMoniker": "StudentRegistration.Api\\Services\\StudentService.cs",
+              "ToolTip": "C:\\Projects\\Programming2bGroup4\\StudentRegistration.Api\\StudentRegistration.Api\\Services\\StudentService.cs",
+              "RelativeToolTip": "StudentRegistration.Api\\Services\\StudentService.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAswEkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-18T07:28:11.595Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "StudentController.cs",
+              "DocumentMoniker": "C:\\Projects\\Programming2bGroup4\\StudentRegistration.Api\\StudentRegistration.Api\\Controllers\\StudentController.cs",
+              "RelativeDocumentMoniker": "StudentRegistration.Api\\Controllers\\StudentController.cs",
+              "ToolTip": "C:\\Projects\\Programming2bGroup4\\StudentRegistration.Api\\StudentRegistration.Api\\Controllers\\StudentController.cs",
+              "RelativeToolTip": "StudentRegistration.Api\\Controllers\\StudentController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-18T07:27:54.415Z",
+              "EditorCaption": ""
             }
           ]
         }
