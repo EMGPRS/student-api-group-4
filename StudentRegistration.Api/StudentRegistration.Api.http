@@ -1,6 +1,63 @@
-@StudentRegistration.Api_HostAddress = http://localhost:5022
+@baseUrl = http://localhost:5022
 
-GET {{StudentRegistration.Api_HostAddress}}/weatherforecast/
+### Log in as a Viewer (the client keeps the returned cookie)
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "viewer",
+  "password": "viewer123"
+}
+
+### Show the current authenticated user
+GET {{baseUrl}}/api/auth/me
 Accept: application/json
 
-###
+### Read students (Viewer or Admin)
+GET {{baseUrl}}/api/student
+Accept: application/json
+
+### Search students (Viewer or Admin)
+GET {{baseUrl}}/api/student/search?search=ST01
+Accept: application/json
+
+### Log out before switching roles
+POST {{baseUrl}}/api/auth/logout
+
+### Log in as an Admin
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin123"
+}
+
+### Create a student (Admin only)
+POST {{baseUrl}}/api/student
+Content-Type: application/json
+
+{
+  "firstName": "Lerato",
+  "lastName": "Nkosi",
+  "studentNumber": "ST06",
+  "gender": "Female"
+}
+
+### Update a student (Admin only)
+PUT {{baseUrl}}/api/student/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "firstName": "John",
+  "lastName": "Doe",
+  "studentNumber": "ST01",
+  "gender": "Male"
+}
+
+### Delete a student (Admin only)
+DELETE {{baseUrl}}/api/student/1
+
+### End the authenticated session
+POST {{baseUrl}}/api/auth/logout

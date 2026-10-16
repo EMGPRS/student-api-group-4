@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="StudentRegistration.Api.Tests/StudentRegistration.Api.Tests.csproj" Id="5341865b-7c53-4885-9600-8f6ef019336d" />
   <Project Path="StudentRegistration.Api/StudentRegistration.Api.csproj" />
   <Project Path="StudentRegistration.Web/StudentRegistration.Web.csproj" />
 </Solution>
